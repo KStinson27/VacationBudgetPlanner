@@ -15,7 +15,7 @@ namespace VacationBudgetPlanner
             decimal spendingMoney;
             string money;
             double perDiem;
-            double euroRate = 0.86;
+            decimal euroRate = 0.86m;
             string perDiemEuro;
             double inEuro;
             CultureInfo eu = new CultureInfo("fr-FR");
@@ -43,7 +43,7 @@ namespace VacationBudgetPlanner
                 money = spendingMoney.ToString("C2");
 
                 perDiem = (double)(spendingMoney / tripLength);
-                inEuro = (double) spendingMoney * euroRate;
+                inEuro = (double) (spendingMoney * euroRate) / tripLength;
 
                 perDiemEuro = inEuro.ToString("c", eu);
 
@@ -51,6 +51,7 @@ namespace VacationBudgetPlanner
 
                 Console.WriteLine("Your daily spending limit is {0:C2} or {1:C}",perDiem, perDiemEuro);
             }
+
             else
             {
                 Console.WriteLine("To Be Continued");
